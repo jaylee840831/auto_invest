@@ -22,7 +22,7 @@
 
 ## 專案啟動步驟
 本專案使用 Eclipse 開發，因此設定以 Eclipse 為主
-1. 可以先在 telegram 註冊照號以及創一個群組做測試，訊息格式固定如下<br>
+1. 可以先在 telegram 註冊帳號以及創一個群組做測試，訊息格式固定如下<br>
 ACDC x MWS<br>
 標的:DYDXUSDT<br>
 開倉價格:1.982<br>
