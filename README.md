@@ -22,8 +22,7 @@
 
 ## 專案啟動步驟
 本專案使用 Eclipse 開發，因此設定以 Eclipse 為主
-1. 可以先在 telegram 註冊照號以及創一個群組做測試，訊息格式固定如下
-<br>
+1. 可以先在 telegram 註冊照號以及創一個群組做測試，訊息格式固定如下<br>
 ACDC x MWS<br>
 標的:DYDXUSDT<br>
 開倉價格:1.982<br>
@@ -31,7 +30,7 @@ ACDC x MWS<br>
 目前止損:1.976054<br>
 套保%:3.0%<br>
 套保時間:2022-07-26 18:19:02<br>
-<img src=""/> <p>
+<img src="https://github.com/jaylee840831/auto_invest/blob/master/image/telegram%E8%A8%8A%E6%81%AF.png"/> <p>
 2. 目前專案內部已經載好 telegram api 的 .so檔，存放在tdlib/src/main/resources/lib，若需要原始下載步驟可以至 https://github.com/tdlib/td 查看如何生成適用於 Java 專案的 library <p>
 3. 設定 Native Library 的路徑，tdlib/src/main/resources/lib
 <img src="https://github.com/jaylee840831/auto_invest/blob/master/image/tdlib%E8%B7%AF%E5%BE%91.png" /> <p>
