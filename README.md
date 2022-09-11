@@ -35,7 +35,7 @@ ACDC x MWS<br>
 2. 目前專案內部已經載好 telegram api 的 .so檔，存放在tdlib/src/main/resources/lib，若需要原始下載步驟可以至 https://github.com/tdlib/td 查看如何生成適用於 Java 專案的 library <p>
 3. 設定 Native Library 的路徑，tdlib/src/main/resources/lib
 <img src="https://github.com/jaylee840831/auto_invest/blob/master/image/tdlib%E8%B7%AF%E5%BE%91.png" /> <p>
-4. 本地端資料庫請自行到 application.yml 設定
+4. 本地端資料庫請自行到 application.yml 設定 <p>
 5. 第一次啟動專案時，到 localhost:8080/manage/home 平台管理畫面點選開啟自動收訊，會需要輸入要接收訊息的 telegram 帳號的手機號碼，以及驗證碼(此方式就是一般登入 telegram app 或 web 版的模式)
 <img src="https://github.com/jaylee840831/auto_invest/blob/master/image/%E7%99%BB%E5%85%A5telegram.png" /> <p>
 6. 重啟開發環境與專案，在資料夾 tdlib 底下會再出現一個資料夾 tdlib，這時就是已經記住帳號且登入了 <p>
