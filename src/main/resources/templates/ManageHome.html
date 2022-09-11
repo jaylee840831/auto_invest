@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>訊息自動交易平台</title>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<style type="text/css">
+.bg-gradient {
+background: #C9D6FF;
+background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF); 
+background: linear-gradient(to right, #E2E2E2, #C9D6FF);
+} 
+ul li {
+  margin-bottom:1.4rem;
+}
+.pricing-divider {
+border-radius: 20px;
+background: #C64545;
+padding: 1em 0 4em;
+position: relative;
+}
+.blue .pricing-divider{
+background: #2D5772; 
+}
+.green .pricing-divider {
+background: #1AA85C; 
+}
+.red b {
+  color:#C64545
+}
+.blue b {
+  color:#2D5772
+}
+.green b {
+  color:#1AA85C
+}
+.pricing-divider-img {
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	width: 100%;
+	height: 80px;
+}
+.deco-layer {
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+.btn-custom  {
+  background:#C64545; color:#fff; border-radius:20px
+}
+.btn-custom:hover {
+  background-color: red;
+  color: white;
+}
+
+.btn-custom2  {
+  background:#1AA85C; color:#fff; border-radius:20px
+}
+
+.btn-custom2:hover {
+  background-color: green;
+  color: white;
+}
+
+.btn-custom3  {
+  background:black; color:#fff; border-radius:20px
+}
+
+.btn-custom3:hover {
+  background-color: gray;
+  color: white;
+}
+
+.img-float {
+  width:50px; position:absolute;top:-3.5rem;right:1rem
+}
+
+.princing-item {
+  transition: all 150ms ease-out;
+}
+.princing-item:hover {
+  transform: scale(1.05);
+}
+.princing-item:hover .deco-layer--1 {
+  -webkit-transform: translate3d(15px, 0, 0);
+  transform: translate3d(15px, 0, 0);
+}
+.princing-item:hover .deco-layer--2 {
+  -webkit-transform: translate3d(-15px, 0, 0);
+  transform: translate3d(-15px, 0, 0);
+}
+
+/* sign in FORM */
+#logreg-forms{
+    width:412px;
+    /*margin:10vh auto;*/
+    margin:auto;
+    background-color:#f3f3f3;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+#logreg-forms form {
+    width: 100%;
+    max-width: 410px;
+    padding: 15px;
+    margin: auto;
+}
+#logreg-forms .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+#logreg-forms .form-control:focus { z-index: 2; }
+#logreg-forms .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#logreg-forms .form-signin input[type="password"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#logreg-forms .social-login{
+    width:390px;
+    margin:0 auto;
+    margin-bottom: 14px;
+}
+#logreg-forms .social-btn{
+    font-weight: 100;
+    color:white;
+    width:190px;
+    font-size: 0.9rem;
+}
+
+#logreg-forms a{
+    display: block;
+    padding-top:10px;
+    color:lightseagreen;
+}
+
+#logreg-form .lines{
+    width:200px;
+    border:1px solid red;
+}
+
+
+#logreg-forms button[type="submit"]{ margin-top:10px; }
+
+#logreg-forms .facebook-btn{  background-color:#3C589C; }
+
+#logreg-forms .google-btn{ background-color: #DF4B3B; }
+
+#logreg-forms .form-reset, #logreg-forms .form-signup{ display: none; }
+
+#logreg-forms .form-signup .social-btn{ width:210px; }
+
+#logreg-forms .form-signup input { margin-bottom: 2px;}
+
+.form-signup .social-login{
+    width:210px !important;
+    margin: 0 auto;
+}
+
+/* Mobile */
+
+@media screen and (max-width:500px){
+    #logreg-forms{
+        width:300px;
+    }
+    
+    #logreg-forms  .social-login{
+        width:200px;
+        margin:0 auto;
+        margin-bottom: 10px;
+    }
+    #logreg-forms  .social-btn{
+        font-size: 1.3rem;
+        font-weight: 100;
+        color:white;
+        width:200px;
+        height: 56px;
+        
+    }
+    #logreg-forms .social-btn:nth-child(1){
+        margin-bottom: 5px;
+    }
+    #logreg-forms .social-btn span{
+        display: none;
+    }
+    #logreg-forms  .facebook-btn:after{
+        content:'Facebook';
+    }
+  
+    #logreg-forms  .google-btn:after{
+        content:'Google+';
+    }
+</style>
+
+</head>
+<body>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- 啟動 重送收訊指令 -->  
+<div class="container-fluid bg-gradient p-5">
+      <div class="row m-auto text-center w-75">
+        
+        <div class="col-4 princing-item red">
+          <div class="pricing-divider ">
+              <h3 class="text-light">重送自動收訊請求</h3>
+             <svg class='pricing-divider-img' enable-background='new 0 0 300 100' height='100px' id='Layer_1' preserveAspectRatio='none' version='1.1' viewBox='0 0 300 100' width='300px' x='0px' xml:space='preserve' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' y='0px'>
+          <path class='deco-layer deco-layer--1' d='M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729
+	c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z' fill='#FFFFFF' opacity='0.6'></path>
+          <path class='deco-layer deco-layer--2' d='M-35.667,44.628c0,0,42.91-34.463,87.51-14.191c77.31,35.141,113.304-1.952,146.639-4.729
+	c48.653-4.055,69.939,16.218,69.939,16.218v54.396H-35.667V44.628z' fill='#FFFFFF' opacity='0.6'></path>
+          <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716
+	H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
+          <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428
+	c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
+        </svg>
+          </div>
+          <div class="card-body bg-white mt-0 shadow">
+            <button type="button" id="restart" class="btn btn-lg btn-block  btn-custom ">SEND</button>
+          </div>
+        </div>
+
+
+		<div class="col-4 princing-item red" style="visibility:hidden">
+          <div class="pricing-divider ">
+              <h3 class="text-light"></h3>
+             <svg class='pricing-divider-img' enable-background='new 0 0 300 100' height='100px' id='Layer_1' preserveAspectRatio='none' version='1.1' viewBox='0 0 300 100' width='300px' x='0px' xml:space='preserve' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' y='0px'>
+          <path class='deco-layer deco-layer--1' d='M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729
+	c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z' fill='#FFFFFF' opacity='0.6'></path>
+          <path class='deco-layer deco-layer--2' d='M-35.667,44.628c0,0,42.91-34.463,87.51-14.191c77.31,35.141,113.304-1.952,146.639-4.729
+	c48.653-4.055,69.939,16.218,69.939,16.218v54.396H-35.667V44.628z' fill='#FFFFFF' opacity='0.6'></path>
+          <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716
+	H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
+          <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428
+	c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
+        </svg>
+          </div>
+          <div class="card-body bg-white mt-0 shadow">
+            <button type="button" class="btn btn-lg btn-block  btn-custom "></button>
+          </div>
+        </div>
+  
+        <div class="col-4 princing-item green">
+          <div class="pricing-divider ">
+              <h3 class="text-light">開啟自動收訊</h3>
+             <svg class='pricing-divider-img' enable-background='new 0 0 300 100' height='100px' id='Layer_1' preserveAspectRatio='none' version='1.1' viewBox='0 0 300 100' width='300px' x='0px' xml:space='preserve' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' y='0px'>
+          <path class='deco-layer deco-layer--1' d='M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729
+	c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z' fill='#FFFFFF' opacity='0.6'></path>
+          <path class='deco-layer deco-layer--2' d='M-35.667,44.628c0,0,42.91-34.463,87.51-14.191c77.31,35.141,113.304-1.952,146.639-4.729
+	c48.653-4.055,69.939,16.218,69.939,16.218v54.396H-35.667V44.628z' fill='#FFFFFF' opacity='0.6'></path>
+          <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716
+	H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
+          <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428
+	c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
+        </svg>
+          </div>
+
+          <div class="card-body bg-white mt-0 shadow">
+            <button type="button" id="start" class="btn btn-lg btn-block  btn-custom2 ">START</button>
+          </div>
+        </div>
+                
+      </div>
+</div>
+
+<!-- 索引目錄 -->
+<div class="row justify-content-center" style="height:100px;">
+    <h4><a href="#logreg-forms">最新訊息</a></h4>
+	<h4>&nbsp;&nbsp;&nbsp;</h4>
+	<h4><a href="#register_list">已註冊交易用戶列表</a></h4>
+</div>
+
+<!-- 收訊介面 -->  
+<div id="logreg-forms">
+  <form class="form-signin">
+	    <div class="well">
+	        <h2 style="text-align:center">最新訊息</h2>
+	    </div>
+	    <div id="new_news">
+	    		    其他訊息<p>null<p>
+	             標題<p>null<p>
+	             標的<p>null<p>
+	             開倉價格<p>null<p>
+		        目前獲利<p>null<p>
+		        目前止損<p>null<p>
+		        套保％<p>null<p>
+		        套保時間<p>null<p>
+	    </div>
+	    <div class="row">
+	       <div class="col-sm-6 col-md-6">
+	       	<button type="button" id="start_message" class="btn btn-block btn-custom3 ">GET</button>
+	       </div>
+	       <div class="col-sm-6 col-md-6">
+	       	<button type="button" id="end_message" class="btn btn-block btn-custom3 ">CLOSE</button>
+	     	</div>
+		</div>
+	</form>
+</div>
+
+<!-- 註冊交易列表 -->  
+<div id="register_list" class="container" style="margin-top:100px">
+	<h2 style="text-align:center">已註冊交易用戶列表</h2>
+	<table id="data_table" class="table table-striped" style="width:100%">
+	</table>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function () {
+	
+	var intervalID;
+	
+	$('#data_table').html('')
+	$('#data_table').append(
+			'<thead>'
+				+'<tr>'
+					+'<th>user id</th>'
+					+'<th>api key</th>'
+					+'<th>secret key</th>'
+				+'</tr>'
+			+'/<thead>'
+			+'<tbody>'
+			)
+	
+    $.ajax({
+        type: "GET",
+        url: "/api/td/invest_list/bingx",
+        dataType: "json",
+        success: function (result, status, xhr) {
+        	//console.log(result)
+        	
+        	$.each(result, function(index, element) {
+        		$('#data_table').append(
+        				'<tr>'
+        				+'<td>'+element.userId+'</td>'
+        				+'<td>'+element.apiKey+'</td>'
+        				+'<td>'+element.secretKey+'</td>'
+        				+'</tr>'
+        				)
+        	});
+        	
+    		$('#data_table').append(
+    				'</tbody>'
+    				)
+        	$('#data_table').DataTable({});
+        },
+        error: function (xhr, status, error) {
+            alert("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+        }
+    });
+	
+	 function set_command () {
+
+	        $.ajax({
+	            type: "GET",
+	            url: "/api/td/gc",
+	            dataType: "text",
+	            success: function (result, status, xhr) {
+	            	console.log('set command')
+	            },
+	            error: function (xhr, status, error) {
+	                alert("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+	            }
+	        });
+	}
+	
+	function get_newNews () {
+
+        $.ajax({
+            type: "GET",
+            url: "/api/td/gc/info",
+            dataType: "json",
+            success: function (result, status, xhr) {
+            	//console.log('result '+result)
+            	document.getElementById("new_news").innerHTML = 
+            		"其他訊息"+"<p>"+result.message+"<p>"+
+            		"標題"+"<p>"+result.title+"<p>"+
+            		"標的"+"<p>"+result.currency+"<p>"+
+            		"開倉價格"+"<p>"+result.price+"<p>"+
+            		"目前獲利"+"<p>"+result.currentProfit+"<p>"+
+            		"目前止損"+"<p>"+result.currentStopLoss+"<p>"+
+            		"套保％"+"<p>"+result.hedging+"<p>"+
+            		"套保時間"+"<p>"+result.hedgingTime
+            },
+            error: function (xhr, status, error) {
+                console.log("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+            }
+        });
+	}
+	
+   $("#start").click(function (e) {
+       $.ajax({
+           type: "GET",
+           url: "/api/td/start",
+           dataType: "text",
+           success: function (result, status, xhr) {
+        	   document.getElementById("new_news").innerHTML = result;
+        	   set_command();
+           },
+           error: function (xhr, status, error) {
+               alert("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+           }
+       });
+   });
+   
+   $("#restart").click(function (e) {
+	   set_command();
+   });
+   
+   $("#start_message").click(function (e) {
+	   intervalID = setInterval(get_newNews, 2000)
+	   
+	   $('#start_message').attr('disabled',true)
+	   $('#end_message').attr('disabled',false)
+   });
+   
+   $("#end_message").click(function (e) {
+	   clearInterval(intervalID)
+	   
+	   $('#start_message').attr('disabled',false)
+	   $('#end_message').attr('disabled',true)
+   });
+});
+</script>
+</body>
+</html>

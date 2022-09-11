@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>訊息自動交易平台</title>
+
+<style type="text/css">
+
+.bg-gradient {
+background: #C9D6FF;
+background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF); 
+background: linear-gradient(to right, #E2E2E2, #C9D6FF);
+} 
+
+.btn-custom  {
+  background:black; color:#fff; border-radius:20px
+}
+
+.btn-custom:hover {
+  background-color: gray;
+  color: white;
+}
+
+/* sign in FORM */
+#logreg-forms{
+    width:412px;
+    margin:10vh auto;
+    background-color:#f3f3f3;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+#logreg-forms form {
+    width: 100%;
+    max-width: 410px;
+    padding: 15px;
+    margin: auto;
+}
+#logreg-forms .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+#logreg-forms .form-control:focus { z-index: 2; }
+#logreg-forms .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#logreg-forms .form-signin input[type="password"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#logreg-forms .social-login{
+    width:390px;
+    margin:0 auto;
+    margin-bottom: 14px;
+}
+#logreg-forms .social-btn{
+    font-weight: 100;
+    color:white;
+    width:190px;
+    font-size: 0.9rem;
+}
+
+#logreg-forms a{
+    display: block;
+    padding-top:10px;
+    color:lightseagreen;
+}
+
+#logreg-form .lines{
+    width:200px;
+    border:1px solid red;
+}
+
+
+#logreg-forms button[type="submit"]{ margin-top:10px; }
+
+#logreg-forms .facebook-btn{  background-color:#3C589C; }
+
+#logreg-forms .google-btn{ background-color: #DF4B3B; }
+
+#logreg-forms .form-reset, #logreg-forms .form-signup{ display: none; }
+
+#logreg-forms .form-signup .social-btn{ width:210px; }
+
+#logreg-forms .form-signup input { margin-bottom: 2px;}
+
+.form-signup .social-login{
+    width:210px !important;
+    margin: 0 auto;
+}
+
+/* Mobile */
+
+@media screen and (max-width:500px){
+    #logreg-forms{
+        width:300px;
+    }
+    
+    #logreg-forms  .social-login{
+        width:200px;
+        margin:0 auto;
+        margin-bottom: 10px;
+    }
+    #logreg-forms  .social-btn{
+        font-size: 1.3rem;
+        font-weight: 100;
+        color:white;
+        width:200px;
+        height: 56px;
+        
+    }
+    #logreg-forms .social-btn:nth-child(1){
+        margin-bottom: 5px;
+    }
+    #logreg-forms .social-btn span{
+        display: none;
+    }
+    #logreg-forms  .facebook-btn:after{
+        content:'Facebook';
+    }
+  
+    #logreg-forms  .google-btn:after{
+        content:'Google+';
+    }
+</style>
+
+</head>
+<body>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<nav class="navbar navbar-expand-lg bg-gradient">
+	  <a class="navbar-brand" style="font-weight: bold;font-style: oblique;" href="/client/home">訊息自動交易平台</a>
+	  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	   	<ul class="navbar-nav me-auto">
+	   		<li class="nav-item">
+	      		<button class="btn btn-outline-success my-2 my-sm-0 register_auto_trading" type="button">註冊自動交易</button>
+	      	</li>
+	    </ul>
+	  </div>-->
+	</nav>
+	
+    <div class="row justify-content-center" style="margin-top:20px;">
+        <button type="button" id="register_auto_trading" class="btn btn-lg btn-info">註冊自動交易(BingX用戶)</button>
+    </div>
+	
+    <div id="logreg-forms">
+        <form class="form-signin">
+            <h2 style="text-align:center">最新訊息</h2>
+            <div id="new_news">
+	         	    其他訊息<p>null<p>
+	             標題<p>null<p>
+	             標的<p>null<p>
+	             開倉價格<p>null<p>
+		        目前獲利<p>null<p>
+		        目前止損<p>null<p>
+		        套保％<p>null<p>
+		        套保時間<p>null<p>
+            </div>
+            <div class="row">
+		        <div class="col-sm-6 col-md-6">
+		        	<button type="button" id="start_message" class="btn btn-block btn-custom">GET</button>
+		        </div>
+		        <div class="col-sm-6 col-md-6">
+		        	<button type="button" id="end_message" class="btn btn-block btn-custom">CLOSE</button>
+		        </div>
+			</div>
+         </form>
+    </div>
+
+<script>
+$(document).ready(function () {
+	var intervalID;
+	
+	function get_newNews () {
+
+        $.ajax({
+            type: "GET",
+            url: "/api/td/gc/info",
+            dataType: "json",
+            success: function (result, status, xhr) {
+            	//console.log('result '+result)
+            	document.getElementById("new_news").innerHTML = 
+            		"其他訊息"+"<p>"+result.message+"<p>"+
+            		"標題"+"<p>"+result.title+"<p>"+
+            		"標的"+"<p>"+result.currency+"<p>"+
+            		"開倉價格"+"<p>"+result.price+"<p>"+
+            		"目前獲利"+"<p>"+result.currentProfit+"<p>"+
+            		"目前止損"+"<p>"+result.currentStopLoss+"<p>"+
+            		"套保％"+"<p>"+result.hedging+"<p>"+
+            		"套保時間"+"<p>"+result.hedgingTime
+            },
+            error: function (xhr, status, error) {
+                console.log("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+            }
+        });
+	}
+	
+   $("#start_message").click(function (e) {
+	   intervalID = setInterval(get_newNews, 2000)
+	   
+	   $('#start_message').attr('disabled',true)
+	   $('#end_message').attr('disabled',false)
+   });
+   
+   $("#end_message").click(function (e) {
+	   clearInterval(intervalID)
+	   console.log('hi')
+	   $('#start_message').attr('disabled',false)
+	   $('#end_message').attr('disabled',true)
+   });
+   
+   $("#register_auto_trading").click(function (e){
+	   window.location.href = '/client/register';
+   });
+});
+</script>
+</body>
+</html>

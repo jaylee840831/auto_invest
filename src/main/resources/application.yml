@@ -1,0 +1,24 @@
+spring:
+#  profiles: 
+#    active: mysql 
+  web: 
+    resources: 
+      static-locations: classpath:/
+      
+  dataSource: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/investDB
+    username: root
+    password: 
+  
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate: 
+      ddl-auto: update
+    
+server: 
+  port: 8080
+  
+#自定義參數
+TDlib: 
+  chat_room_code:
