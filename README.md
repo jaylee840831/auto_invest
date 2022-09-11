@@ -10,6 +10,8 @@
 <br>
 開發環境: Eclipse
 <br>
+資料庫: MySQL
+<br>
 後端: Spring Boot
 <br>
 前端: HTML/CSS/Javascript、Bootstrap
