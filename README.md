@@ -47,6 +47,6 @@ ACDC x MWS<br>
 <img src="https://github.com/jaylee840831/auto_invest/blob/master/image/%E6%9C%80%E6%96%B0%E8%A8%8A%E6%81%AF.png" /> <p>
 10. 若已經有顯示最新一筆訊息，到 localhost:8080/client/register，註冊自動交易的BingX用戶。uesr id 是您在 BingX 網站【用戶中心】->【帳戶與安全】的 UID，接著您需要通過 BingX 網站【用戶中心】->【API管理(專業合約)】取得2個必須記住的信息： API Key 和 Secret Key ，兩種 key 將由隨機生成和提供。 創建完成再到本網站註冊。
 <img src="https://github.com/jaylee840831/auto_invest/blob/master/image/%E8%A8%BB%E5%86%8A%E4%BA%A4%E6%98%93.png" /> <p>
-11. 若註冊成功，可以在 localhost:8080/manage/home 的已註冊交易用戶列表中看到註冊好的用戶訊息
+11. 若註冊成功，可以在 /manage/home 的已註冊交易用戶列表中看到註冊好的用戶訊息
 <img src="https://github.com/jaylee840831/auto_invest/blob/master/image/%E8%A8%BB%E5%86%8A%E4%BA%A4%E6%98%93%E5%88%97%E8%A1%A8.png" /> <p>
 
