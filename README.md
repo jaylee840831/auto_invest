@@ -49,5 +49,4 @@ ACDC x MWS<br>
 <img src="https://github.com/jaylee840831/auto_invest/blob/master/image/%E8%A8%BB%E5%86%8A%E4%BA%A4%E6%98%93.png" /> <p>
 11. 若註冊成功，可以在 localhost:8080/manage/home 的已註冊交易用戶列表中看到註冊好的用戶訊息
 <img src="https://github.com/jaylee840831/auto_invest/blob/master/image/%E8%A8%BB%E5%86%8A%E4%BA%A4%E6%98%93%E5%88%97%E8%A1%A8.png" /> <p>
-12. 本專案設定每分鐘交易一次，可以自行修改
 
